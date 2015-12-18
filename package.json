@@ -1,0 +1,27 @@
+{
+  "name": "yami-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Demian-Moschin/yami-app.git"
+  },
+  "author": "DHM",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Demian-Moschin/yami-app/issues"
+  },
+  "homepage": "https://github.com/Demian-Moschin/yami-app#readme",
+  "dependencies": {
+    "browser-sync": "^2.10.1",
+    "browserify": "^12.0.1",
+    "gulp": "^3.9.0",
+    "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "react": "^0.14.3"
+  }
+}
