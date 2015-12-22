@@ -29,7 +29,7 @@ gulp.task('js', function () {
         this.emit('end');
     });
 
-    return bundle.pipe(source('./js/index.js')).pipe(gulp.dest('build/js'));
+    return bundle.pipe(source('./js/app.js')).pipe(gulp.dest('build/js'));
 });
 
 gulp.task('html', function () {
