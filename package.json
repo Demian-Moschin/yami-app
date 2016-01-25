@@ -1,35 +1,26 @@
 {
   "name": "yami-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node .",
+    "pretest": "jshint ."
+  },
+  "dependencies": {
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "loopback": "^2.22.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^2.1.0",
+    "loopback-datasource-juggler": "^2.39.0",
+    "serve-favicon": "^2.0.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.5.6"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Demian-Moschin/yami-app.git"
+    "type": "",
+    "url": ""
   },
-  "author": "DHM",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Demian-Moschin/yami-app/issues"
-  },
-  "homepage": "https://github.com/Demian-Moschin/yami-app#readme",
-  "dependencies": {
-    "browser-sync": "^2.10.1",
-    "browserify": "^12.0.1",
-    "gulp": "^3.9.0",
-    "gulp-compile-handlebars": "^0.6.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-sass": "^2.1.1",
-    "gulp-watch": "^4.3.5",
-    "jquery": "^2.1.4",
-    "lodash": "^3.10.1",
-    "react": "^0.14.3",
-    "reactify": "^1.1.1",
-    "vinyl-source-stream": "^1.1.0",
-    "webpack": "^1.12.9",
-    "html-webpack-plugin": "^1.7.0"
-  }
+  "description": "yami-app"
 }
