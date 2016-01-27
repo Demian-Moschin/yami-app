@@ -4,41 +4,41 @@ var API = require('../API/battle-net.js');
 
 var RealmListView = React.createClass({
 
-    getInitialState: function () {
-        return {
-            realmCollection: []
-        };
-    },
+	getInitialState: function () {
+		return {
+			realmCollection: []
+		};
+	},
 
-    updateCollection: function (data) {
-        this.setState({
-            realmCollection: data
-        });
-    },
+	updateCollection: function (data) {
+		this.setState({
+			realmCollection: data
+		});
+	},
 
-    componentDidMount: function () {
-        API.getRealm(this.updateCollection);
-    },
+	componentDidMount: function () {
+		API.getRealm(this.updateCollection);
+	},
 
-    render: function () {
-        return (
-            <div>
-                {this.renderList()}
-            </div>
-        )
-    },
+	render: function () {
+		return (
+			<div>
+				{this.renderList()}
+			</div>
+		)
+	},
 
-    getListProps: function () {
-        return {
-            realmCollection: this.state.realmCollection,
-        }
-    },
+	getListProps: function () {
+		return {
+			realmCollection: this.state.realmCollection,
+		}
+	},
 
-    renderList: function () {
-        return (
-            <RealmList {...this.getListProps()} />
-        )
-    }
+	renderList: function () {
+		return (
+			<RealmList {...this.getListProps()} />
+		)
+	}
 
 });
 

@@ -1,38 +1,52 @@
-var classNames = ('classnames');
+var classnames = require('classnames');
 var React = require('react');
 
 var ButtonComponent = React.createClass({
 
     propTypes: {
-        className: React.PropTypes.string.isRequired,
         type: React.PropTypes.string.isRequired,
-        spanClass: React.PropTypes.string
     },
+
     getButtonProps: function () {
+
         return {
-            className: this.props.className,
+            className: this.getClass(),
             type: this.props.type,
-            onClick: this.props.onClick
+            onClick: this.handleClick
         };
     },
 
     getSpanClass: function () {
-        var spanClass = {
-            'glyphicon': true
+        var classes = {
+            'glyphicon-pencil': true
         };
-        console.log('asdfasdfasfd');
-        return classNames(spanClass);
+
+        return classnames(classes);
     },
 
     render: function () {
+
         return (
             <button {...this.getButtonProps()}>
-                <span className={this.getSpanClass}></span>
+                <span className={this.getSpanClass()}></span>
             </button>
         );
+    },
+
+    getClass: function () {
+        var classes = (this.props.className)? this.props.className : null;
+
+        return classes;
+    },
+
+    handleClick: function () {
+
+        if(this.props.onClick) {
+            this.props.onClick()
+        }
     }
+    
 
 });
 
 module.exports = ButtonComponent;
-

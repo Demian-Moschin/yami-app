@@ -43,11 +43,12 @@ var CharacterInfo = React.createClass({
     handleBtnClick: function () {
         alert('yea');
     },
+
     getSearchButtonClass: function () {
         var classes = {
             'btn': true,
-            'btn-default': true,
-            'btn-small': true
+            'btn-default': false,
+            'btn-md': true
         };
 
         return classNames(classes);
