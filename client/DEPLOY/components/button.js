@@ -4,7 +4,13 @@ var React = require('react');
 var ButtonComponent = React.createClass({
 
     propTypes: {
-        type: React.PropTypes.string.isRequired,
+        type: React.PropTypes.string.isRequired
+    },
+
+    getDefaultProps: function () {
+        return {
+            type: 'button'
+        }
     },
 
     getButtonProps: function () {
@@ -34,8 +40,15 @@ var ButtonComponent = React.createClass({
     },
 
     getClass: function () {
-        var classes = (this.props.className)? this.props.className : null;
 
+        var classes = {
+            'button': true,
+            'button-default': true
+        };
+
+
+        classes[this.props.className] = (this.props.className);
+        
         return classes;
     },
 

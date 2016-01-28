@@ -2,7 +2,7 @@ var React = require('react');
 var Router = require('react-router');
 var Input = require('./input.js');
 var classNames = require('classnames');
-var Button = require('./button-small');
+var Button = require('./button');
 
 var CharacterInfo = React.createClass({
 
@@ -35,7 +35,6 @@ var CharacterInfo = React.createClass({
     getSearchButtonProps: function () {
         return ({
             className: this.getSearchButtonClass(),
-            type: 'button',
             onClick: this.handleBtnClick
         });
     },
@@ -46,9 +45,7 @@ var CharacterInfo = React.createClass({
 
     getSearchButtonClass: function () {
         var classes = {
-            'btn': true,
-            'btn-default': false,
-            'btn-md': true
+            'btn-xs': true
         };
 
         return classNames(classes);
