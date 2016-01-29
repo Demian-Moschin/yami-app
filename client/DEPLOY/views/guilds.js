@@ -1,5 +1,5 @@
 var React = require('react');
-var Guildcomponent = require('../components/guild-component.js');
+var Guildcomponent = require('./components/guild-component.js');
 var MainStoreActions = require('../actions/main-store-actions.js');
 var API = require('../API/battle-net.js');
 

@@ -4,11 +4,11 @@
     "connector": "memory"
   },
   "teachApp": {
+    "host": "localhost",
+    "database": "teachApp",
+    "password": "",
     "name": "teachApp",
     "connector": "mysql",
-		"host": "localhost",
-		"user": "root",
-		"password": "",
-		"database": "teachApp"
+    "user": "root"
   }
 }

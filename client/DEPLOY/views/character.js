@@ -1,6 +1,6 @@
 var React = require('react');
 var API = require('../API/battle-net.js');
-var CharacterComponent = require('../components/character-info.js');
+var CharacterComponent = require('./components/character-info.js');
 
 
 var CharacterView= React.createClass({

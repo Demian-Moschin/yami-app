@@ -1,23 +1,22 @@
 var React = require('react');
-var RealmList = require('./components/realm-list.js');
-var API = require('../API/battle-net.js');
 
 var RealmListView = React.createClass({
 
 	getInitialState: function () {
 		return {
-			realmCollection: []
+			newsCollection: []
 		};
 	},
 
 	updateCollection: function (data) {
 		this.setState({
-			realmCollection: data
+			newsCollection: data
 		});
 	},
 
 	componentDidMount: function () {
-		API.getRealm(this.updateCollection);
+		//add conection to API.
+		//API.getRealm(this.updateCollection);
 	},
 
 	render: function () {

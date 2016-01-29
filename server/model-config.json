@@ -35,5 +35,13 @@
   "student": {
     "dataSource": "teachApp",
     "public": true
+  },
+  "state": {
+    "dataSource": "teachApp",
+    "public": true
+  },
+  "city": {
+    "dataSource": "teachApp",
+    "public": true
   }
 }

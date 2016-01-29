@@ -1,0 +1,27 @@
+{
+  "name": "city",
+  "plural": "cities",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "idState": {
+      "type": "belongsTo",
+      "model": "state",
+      "foreignKey": "idState"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
