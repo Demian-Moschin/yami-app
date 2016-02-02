@@ -12,11 +12,14 @@
     },
     "name": {
       "type": "string"
+    },
+    "idState": {
+      "type": "number"
     }
   },
   "validations": [],
   "relations": {
-    "idState": {
+    "state": {
       "type": "belongsTo",
       "model": "state",
       "foreignKey": "idState"
