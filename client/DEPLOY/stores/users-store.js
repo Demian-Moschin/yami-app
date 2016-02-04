@@ -1,4 +1,4 @@
-var McFly = require('./dispatcher/McFly');
+var McFly = require('../dispatcher/McFly');
 var _ = require('lodash');
 
 var UserStore = function () {
@@ -23,8 +23,6 @@ UserStore.prototype.addUser = function (payload) {
 UserStore.prototype.deleteUser = function (userId) {
   _.remove(this.users, { id: userId });
 };
-
-
 
 var UserStoreModule = McFly.createStore(new UserStore(),
   function (payload) {

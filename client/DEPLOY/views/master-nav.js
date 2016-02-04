@@ -15,17 +15,6 @@ var MasterNav = React.createClass({
                     <div className="navbar-brand">
                       <Link to="home">Home</Link>
                     </div>
-                    <div className="navbar-right">
-                      <ul className="nav navbar-nav">
-                          <li><Link to="realmStatus">Realm Status</Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                          <li><Link to="guilds">Guilds</Link></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li><Link to="characterInfo">Character Info</Link></li>
-                      </ul>
-                    </div>
                   </div>
               </nav>
             </header>
