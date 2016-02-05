@@ -1,6 +1,21 @@
 var McFly = require('../dispatcher/McFly');
 
+var articles = [
+  {
+    1:{
+    "title": "Titulo uno",
+    "content": "Alto content amigo"
+    }
+  },
+  {
+    2:{
+    "title": "Titulo dos",
+    "content": "Alto content amigo. es mas dos que el anterior."
+    }
+  }
+];
 
+var serverArticles = [];
 
 var getArticleById = function (id) {
   return articles[id];
@@ -14,6 +29,9 @@ var updateArticle = function (article) {
 var ArticleStore = McFly.createStore({
   getArticles: function () {
     return articles;
+  },
+  getServerArticles: function () {
+    return serverArticles;
   }
 }, function (payload) {
 

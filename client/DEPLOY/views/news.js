@@ -1,4 +1,5 @@
 var actions = require('../actions/article-actions');
+var serverActions = require('../actions/server-actions');
 var ArticleStore = require('../stores/articles-store');
 var React = require('react');
 
@@ -7,7 +8,8 @@ var News = React.createClass({
 
   getInitialState: function () {
     return{
-      articles:  ArticleStore.getArticles()
+      articles:  ArticleStore.getArticles(),
+      serverArticles: ArticleStore.getServerArticles()
     };
   },
 
@@ -23,6 +25,7 @@ var News = React.createClass({
 			<div>
         News are::
 				{this.renderList()}
+        {this.renderServerNews()}
 			</div>
 		)
 	},
@@ -46,6 +49,21 @@ var News = React.createClass({
         <div>{node}</div>
       );
 	},
+
+  renderServerNews: function () {
+    var node = this.state.serverArticles.map(function (article, index) {
+      return (
+        <div>
+          <h3>Article nro:  {index}</h3>
+          <p>{article}</p>
+        </div>
+      );
+    }.bind(this));
+
+    return(
+      <div>{node}</div>
+    );
+  },
 
   handleInputChange: function (index, e) {
     var action = {
