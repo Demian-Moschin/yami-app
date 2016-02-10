@@ -12,9 +12,18 @@ var MasterNav = React.createClass({
             <header>
               <nav className="navbar navbar-inverse" role="navigation">
                   <div className="container-fluid">
-                    <div className="navbar-brand">
-                      <Link to="home">Home</Link>
+                    <div className="navbar-header">
+                      <Link to="home" className="navbar-brand">Home</Link>
                     </div>
+                    <ul className="nav navbar-nav">
+                      <li  className="active"><a href="#">Page 1</a></li>
+                      <li><a href="#">Page 2</a></li>
+                      <li><a href="#">Page 3</a></li>
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right">
+                      <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                      <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
                   </div>
               </nav>
             </header>

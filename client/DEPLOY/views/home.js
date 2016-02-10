@@ -1,4 +1,3 @@
-var News = require('./news');
 var React = require('react');
 
 var Home = React.createClass({
@@ -12,7 +11,6 @@ var Home = React.createClass({
                     <header>
                       <h1>Welcome everyone!</h1>
                     </header>
-                        <News />
                   </div>
               </div>
           </div>

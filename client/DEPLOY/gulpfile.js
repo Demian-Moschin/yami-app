@@ -52,6 +52,8 @@ gulp.task('browser-sync', function () {
 
     gulp.watch([
         'stores/**/*.js',
+        'actions/*.js',
+        'WebAPI UTILS/*.js',
         'index.js',
         'components/**/*.js',
         'libs/**/*.js',

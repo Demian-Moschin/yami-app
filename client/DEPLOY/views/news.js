@@ -8,23 +8,26 @@ var News = React.createClass({
 
   getInitialState: function () {
     return{
-      articles:  ArticleStore.getArticles(),
-      serverArticles: ArticleStore.getServerArticles()
+      //articles:  ArticleStore.getArticles()
+      serverArticles: []
     };
+  },
+
+  componentDidMount: function () {
+    serverActions.getArticles();
   },
 
   storeDidChange: function () {
     console.log('didchange');
     this.setState({
-        articles: ArticleStore.getArticles()
+        //articles: ArticleStore.getArticles()
+        serverArticles: ArticleStore.getServerArticles()
       });
   },
 
 	render: function () {
 		return (
 			<div>
-        News are::
-				{this.renderList()}
         {this.renderServerNews()}
 			</div>
 		)
@@ -51,14 +54,15 @@ var News = React.createClass({
 	},
 
   renderServerNews: function () {
-    var node = this.state.serverArticles.map(function (article, index) {
+    var node = this.state.serverArticles.map(function (student, index) {
       return (
-        <div>
-          <h3>Article nro:  {index}</h3>
-          <p>{article}</p>
+        <div key={index}>
+          <h3>Studens  nro:  {student.id}</h3>
+          <p>{student.lastName}</p><p>{student.name}</p>
+          <p>{student.DOB}</p>
         </div>
       );
-    }.bind(this));
+    });
 
     return(
       <div>{node}</div>
@@ -74,6 +78,10 @@ var News = React.createClass({
       actionType: 'UPDATE_ARTICLE'
     };
     actions.updateArticle(action);
+  },
+
+  handleButtonClick: function () {
+
   }
 
 });
