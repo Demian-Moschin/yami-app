@@ -1,10 +1,11 @@
 module.exports = (function () {
   var React = require('react');
-  var render = require('react-dom');
+  var render = require('react-dom').render;
   var ReactRouter = require('react-router');
   var Router = ReactRouter.Router;
   var Route = ReactRouter.Route;
   var IndexRoute = ReactRouter.IndexRoute;
+  var hashHistory = ReactRouter.hashHistory;
 
 
 
@@ -15,18 +16,19 @@ module.exports = (function () {
 
   var ModuleRouter = function () {
     this.routes = (
-      <Route path="/"  component={MasterNav}>
-        <IndexRoute  handler={Home} />
-        <Route name="home" component={Home} path="home"></Route>
-        <Route name="news" component={News} path="home"></Route>
-      </Route>
+      <Router history={hashHistory}>
+        <Route path="/"  component={MasterNav}>
+          <Route path="home"  component={Home}  />
+          <Route path="news"  component={News}  />
+          <Route path="students"  component={Home}  />
+        </Route>
+      </Router>
     );
   };
 
   ModuleRouter.prototype.run = function (mountNode) {
-    render(<Router routes={this.routes}/>, mountNode)
+    render(this.routes, mountNode)
   };
-
 
   return new ModuleRouter();
 })();

@@ -1,7 +1,7 @@
 var React = require('react');
-var Router = require('react-router');
-var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
+
 
 var MasterNav = React.createClass({
 
@@ -13,12 +13,12 @@ var MasterNav = React.createClass({
               <nav className="navbar navbar-inverse" role="navigation">
                   <div className="container-fluid">
                     <div className="navbar-header">
-                      <Link to="home" className="navbar-brand">Home</Link>
+                      <Link to="/home" className="navbar-brand">Home</Link>
                     </div>
                     <ul className="nav navbar-nav">
-                      <li  className="active"><a href="#">Page 1</a></li>
-                      <li><a href="#">Page 2</a></li>
-                      <li><a href="#">Page 3</a></li>
+                      <li  className="active"><Link to="/news">News</Link></li>
+                      <li><Link to="/students">Students</Link></li>
+                      <li>News</li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                       <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -27,7 +27,7 @@ var MasterNav = React.createClass({
                   </div>
               </nav>
             </header>
-          <RouteHandler />
+          {this.props.children}
         </div>
       )
   }
