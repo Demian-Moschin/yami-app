@@ -5,7 +5,7 @@ module.exports = (function () {
   var Router = ReactRouter.Router;
   var Route = ReactRouter.Route;
   var IndexRoute = ReactRouter.IndexRoute;
-  var hashHistory = ReactRouter.hashHistory;
+  var browserHistory = ReactRouter.browserHistory;
 
 
 
@@ -13,14 +13,16 @@ module.exports = (function () {
   var MasterNav = require('./views/master-nav');
   var News = require('./views/news');
   var Home = require('./views/home');
+  var LogIn = require('./views/log-in');
 
   var ModuleRouter = function () {
     this.routes = (
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
         <Route path="/"  component={MasterNav}>
           <Route path="home"  component={Home}  />
           <Route path="news"  component={News}  />
           <Route path="students"  component={Home}  />
+          <Route path="logIn"  component={LogIn}  />
         </Route>
       </Router>
     );

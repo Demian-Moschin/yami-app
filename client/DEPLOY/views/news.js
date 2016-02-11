@@ -1,6 +1,7 @@
 var actions = require('../actions/article-actions');
 var serverActions = require('../actions/server-actions');
 var ArticleStore = require('../stores/articles-store');
+var Fade = require('react-bootstrap/').Fade;
 var React = require('react');
 
 var News = React.createClass({
@@ -9,7 +10,8 @@ var News = React.createClass({
   getInitialState: function () {
     return{
       //articles:  ArticleStore.getArticles()
-      serverArticles: []
+      serverArticles: [],
+      expanded: false
     };
   },
 
@@ -28,10 +30,22 @@ var News = React.createClass({
 	render: function () {
 		return (
 			<div>
-        {this.renderServerNews()}
+        <Fade in={this.state.expanded} timeout={1000}>
+          <div>
+            <h2>fade in title!!!!</h2>
+            {this.renderServerNews()}
+          </div>
+        </Fade>
+        <button onClick={this.handleFadeClick}>Click!</button>
 			</div>
 		)
 	},
+
+  handleFadeClick: function () {
+    this.setState({
+      expanded: !(this.state.expanded)
+    });
+  },
 
 	renderList: function () {
       var node = this.state.articles.map(function (article, index) {
