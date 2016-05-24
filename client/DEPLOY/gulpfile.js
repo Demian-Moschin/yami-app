@@ -1,15 +1,15 @@
-var browserify = require('browserify');
-var browserSync = require('browser-sync');
-var concat = require('gulp-concat');
 var gulp = require('gulp');
-var handlebars = require('gulp-compile-handlebars');
-var reactify = require('reactify');
 var run = require('run-sequence');
 var sass = require('gulp-sass');
+var browserify = require('browserify');
+var concat = require('gulp-concat');
+var browserSync = require('browser-sync');
 var source = require('vinyl-source-stream');
+var reactify = require('reactify');
+var handlebars = require('gulp-compile-handlebars');
 
 gulp.task('sass', function () {
-    var bundle = gulp.src('./sass/main.scss').pipe(sass()).on('error', function (error) {
+    var bundle = gulp.src('./sass/materialize.scss').pipe(sass()).on('error', function (error) {
         console.log(error);
         this.emit('end');
     });
@@ -23,13 +23,21 @@ gulp.task('sources', function () {
         .pipe(gulp.dest('../build/images'));
 });
 
-gulp.task('js', function () {
-    var bundle = browserify('./index.js').transform(reactify).bundle().on('error', function (error) {
-        console.log('no se pudo load el js !!!' + error);
-        this.emit('end');
-    });
 
-    return bundle.pipe(source('app.js')).pipe(gulp.dest('../build/js'));
+gulp.task('js', function () {
+    var bundle = browserify('./index.js', {debug: true})
+                    .transform(reactify)    
+                    .bundle()
+                    .on('error', function (error) {
+                        console.log('no se pudo load el js !!!' + error);
+                        this.emit('end');
+                    });
+    bundle.pipe(source('boundle.js'));
+
+
+    return gulp.src([bundle, ' '])
+        .pipe(concat('app.js'))
+        .pipe(gulp.dest('../build/js/'));
 });
 
 gulp.task('html', function () {
@@ -38,7 +46,7 @@ gulp.task('html', function () {
         this.emit('end');
     });
 
-    return bundle.pipe(gulp.dest('../build/'));
+    return bundle.pipe(gulp.dest('../build'));
 });
 
 gulp.task('browser-sync', function () {
