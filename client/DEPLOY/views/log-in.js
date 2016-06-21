@@ -6,6 +6,10 @@ let RouterContext = require('react-router').RouterContext;
 
 let LogIn = React.createClass({
 
+  contextTypes: {
+    router: React.PropTypes.func.isRequired
+  },
+
   getInitialState: function () {
     return{
       showModal: true
