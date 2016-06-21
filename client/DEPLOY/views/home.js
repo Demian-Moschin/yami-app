@@ -1,6 +1,6 @@
 var React = require('react');
 
-var Home = React.createClass({
+let Home = React.createClass({
   render: function () {
     return (
       <div>
@@ -10,6 +10,7 @@ var Home = React.createClass({
                   <div className="col-lg-12 col-xs-12">
                     <header>
                       <h1>Welcome everyone!</h1>
+
                     </header>
                   </div>
               </div>

@@ -1,10 +1,10 @@
-var React = require('react');
-var Modal = require('react-bootstrap').Modal;
-var Button = require('react-bootstrap').Button;
-var RouterContext = require('react-router').RouterContext;
+let React = require('react');
+let Modal = require('react-bootstrap').Modal;
+let Button = require('react-bootstrap').Button;
+let RouterContext = require('react-router').RouterContext;
 
 
-var LogIn = React.createClass({
+let LogIn = React.createClass({
 
   getInitialState: function () {
     return{

@@ -1,20 +1,22 @@
-var gulp = require('gulp');
-var run = require('run-sequence');
-var sass = require('gulp-sass');
+var babelify = require('babelify');
+var browserSync = require('browser-sync');
 var browserify = require('browserify');
 var concat = require('gulp-concat');
-var browserSync = require('browser-sync');
-var source = require('vinyl-source-stream');
-var reactify = require('reactify');
+var gulpConf = require('./gulp/gulp-conf');
+var es2015 = require('babel-preset-es2015');
+var gulp = require('gulp');
 var handlebars = require('gulp-compile-handlebars');
+var run = require('run-sequence');
+var sass = require('gulp-sass');
+var source = require('vinyl-source-stream');
 
 gulp.task('sass', function () {
-    var bundle = gulp.src('./sass/materialize.scss').pipe(sass()).on('error', function (error) {
+    var bundle = gulp.src(gulpConf.css.origin).pipe(sass()).on('error', function (error) {
         console.log(error);
         this.emit('end');
     });
 
-    return bundle.pipe(concat('style.css')).pipe(gulp.dest('../build/css/'));
+    return bundle.pipe(concat('style.css')).pipe(gulp.dest(gulpConf.css.dest));
 });
 
 gulp.task('sources', function () {
@@ -23,30 +25,31 @@ gulp.task('sources', function () {
         .pipe(gulp.dest('../build/images'));
 });
 
+gulp.task('fonts', function () {
 
-gulp.task('js', function () {
-    var bundle = browserify('./index.js', {debug: true})
-                    .transform(reactify)    
-                    .bundle()
-                    .on('error', function (error) {
-                        console.log('no se pudo load el js !!!' + error);
-                        this.emit('end');
-                    });
-    bundle.pipe(source('boundle.js'));
+    return gulp.src([gulpConf.fonts.origin])
+        .pipe(gulp.dest(gulpConf.fonts.dest));
+});
 
-
-    return gulp.src([bundle, ' '])
-        .pipe(concat('app.js'))
-        .pipe(gulp.dest('../build/js/'));
+gulp.task('js2', function () {
+    browserify({
+            entries: [gulpConf.js.origin] //can receive multiple entries
+        })
+        .transform(babelify.configure({
+            presets: [es2015, "react"]
+        }))
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest(gulpConf.js.dest));
 });
 
 gulp.task('html', function () {
-    var bundle = gulp.src('./html/index.html').pipe(handlebars()).on('error', function (error) {
+    var bundle = gulp.src(gulpConf.html.origin).pipe(handlebars()).on('error', function (error) {
         console.log(error);
         this.emit('end');
     });
 
-    return bundle.pipe(gulp.dest('../build'));
+    return bundle.pipe(gulp.dest(gulpConf.html.dest));
 });
 
 gulp.task('browser-sync', function () {
@@ -66,7 +69,7 @@ gulp.task('browser-sync', function () {
         'components/**/*.js',
         'libs/**/*.js',
         'views/**/*.js'
-    ], ['js', browserSync.reload]);
+    ], ['js2', browserSync.reload]);
     gulp.watch([
         'html/**/*.html'
     ], ['html', browserSync.reload]);
@@ -78,5 +81,5 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('default', function (cb) {
-    run('html', 'js', 'sass', 'sources', 'browser-sync', cb);
+    run('html', 'js2', 'sass', 'sources', 'fonts', 'browser-sync', cb);
 });
