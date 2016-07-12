@@ -33,14 +33,14 @@ gulp.task('fonts', function () {
 
 gulp.task('js2', function () {
     browserify({
-            entries: [gulpConf.js.origin] //can receive multiple entries
+            entries: ['./index.js'] //can receive multiple entries
         })
         .transform(babelify.configure({
-            presets: [es2015, "react"]
+            presets: ["es2015", "react"]
         }))
         .bundle()
         .pipe(source('app.js'))
-        .pipe(gulp.dest(gulpConf.js.dest));
+        .pipe(gulp.dest('../build/js/'));
 });
 
 gulp.task('html', function () {
