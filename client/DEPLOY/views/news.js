@@ -1,7 +1,6 @@
 var actions = require('../actions/article-actions');
 var serverActions = require('../actions/server-actions');
 var ArticleStore = require('../stores/articles-store');
-var Fade = require('react-bootstrap/').Fade;
 var React = require('react');
 
 var News = React.createClass({
@@ -30,12 +29,10 @@ var News = React.createClass({
 	render: function () {
 		return (
 			<div>
-        <Fade in={this.state.expanded} timeout={1000}>
           <div>
             <h2>fade in title!!!!</h2>
             {this.renderServerNews()}
           </div>
-        </Fade>
         <button onClick={this.handleFadeClick}>Click!</button>
 			</div>
 		)

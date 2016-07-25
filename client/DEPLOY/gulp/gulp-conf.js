@@ -1,6 +1,6 @@
 module.exports = {
 	css: { 
-		origin: './sass/materialize.scss',
+		origin: './sass/**/*.scss',
 		dest: '../build/css/'
 	},
 	js: { 
