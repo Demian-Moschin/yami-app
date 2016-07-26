@@ -31,6 +31,15 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest(gulpConf.fonts.dest));
 });
 
+gulp.task('js', function () {
+    browserify({
+            entries: ['./js/bin/materialize.js'] //can receive multiple entries
+        })
+        .bundle()
+        .pipe(source('app.js'))
+        .pipe(gulp.dest('../build/js/'));
+});
+
 gulp.task('js2', function () {
     browserify({
             entries: ['./index.js'] //can receive multiple entries
@@ -81,5 +90,5 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('default', function (cb) {
-    run('html', 'js2', 'sass', 'sources', 'fonts', 'browser-sync', cb);
+    run('html', 'js', 'js2', 'sass', 'sources', 'fonts', 'browser-sync', cb);
 });
