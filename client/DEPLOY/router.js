@@ -4,12 +4,13 @@ module.exports = (function () {
   var ReactRouter = require('react-router');
   var Router = ReactRouter.Router;
   var Route = ReactRouter.Route;
+  var IndexRedirect = ReactRouter.IndexRedirect; 
   var IndexRoute = ReactRouter.IndexRoute;
   var browserHistory = ReactRouter.browserHistory;
 
 
 
-
+  var App = require('./views/app');
   var MasterNav = require('./views/master-nav');
   var News = require('./views/news');
   var Home = require('./views/home');
@@ -18,11 +19,11 @@ module.exports = (function () {
   var ModuleRouter = function () {
     this.routes = (
       <Router history={browserHistory}>
-        <Route path="/"  component={MasterNav}>
-          <Route path="home"  component={Home}  />
-          <Route path="news"  component={News}  />
-          <Route path="students"  component={Home}  />
-          <Route path="logIn"  component={LogIn}  />
+        <Route path="/" component={App}>
+          <IndexRedirect to="/home" />
+          <Route path="home" component={Home}  />
+          <Route path="news" component={News}  />
+          <Route path="logIn" component={LogIn}  />
         </Route>
       </Router>
     );
